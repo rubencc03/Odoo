@@ -1,0 +1,74 @@
+<odoo>
+  <data>
+
+    <record model="ir.actions.act_window" id="action_almacen">
+      <field name="name">Registros de Recogidas de alimentos</field>
+      <field name="res_model">alimento</field>
+      <field name="view_mode">kanban,tree,form,calendar</field>
+    </record>
+
+    <!-- menu almacen -->
+    <menuitem name="Mostrar almacen" id="almacen" parent="seccion_principal" action="action_almacen"/>
+
+    <!-- Vista Kanban -->
+    <record id="alimentos_view_kanban" model="ir.ui.view">
+        <field name="name">Lista de partidos de la liga</field>
+        <field name="model">alimento</field>
+        <field name="arch" type="xml">
+            <!-- Agrupamos por el atributo cateoria que nos indica el estado/lugar del alimento-->
+            <kanban default_group_by="categoria_id">
+                <field name="donador"/>
+                <!-- Plantilla QWeb para indicar como es la tarjeta Kanban-->
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_content">
+                                <div class="oe_kanban_card">
+                                    <div class="text-muted">
+                                        <b>
+                                            Nombre Donador: <field name="donador"/>
+                                        </b>
+                                    </div>
+                                    <div >
+                                         <field name="nombre"/>:   
+                                         <field name="num_alimento"/> Unidades  
+                                                                          
+                                    </div>
+                                    <div>
+                                        Fecha Caducación:  <field name="fecha_caducar"/> 
+                                    </div>
+                
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </t>
+                </templates>
+
+            </kanban>
+        </field>
+    </record>
+
+    <record id="alimentos_calendario_view" model="ir.ui.view">
+        <field name="name">Calendario Caducidad</field>
+        <field name="model">alimento</field>
+        <field name="arch" type="xml">
+            <!-- Definimos las fechas y color de la vista calendario-->
+            <calendar  string="Caduca Calendar" date_start="fecha_caducar" >
+                <field name="nombre" />
+                <field name="num_alimento" />
+            </calendar>
+        </field>
+    </record>
+   
+
+
+
+   
+
+
+
+
+
+  </data>
+</odoo>

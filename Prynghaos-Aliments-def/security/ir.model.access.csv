@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+acl_registros,registros_default,model_registros,base.group_user,1,1,1,1
+acl_voluntario,voluntario_default,model_voluntario,base.group_user,1,1,1,1
+acl_alimento,alimento_default,model_alimento,base.group_user,1,1,1,1

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='voluntario_action' model='ir.actions.act_window'>
+        <field name="name">Listado de voluntarios</field>
+        <field name="res_model">voluntario</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+    <menuitem name="Voluntarios" id="voluntario_menu" parent="seccion_principal" action="voluntario_action"/>
+
+    <!-- Vista formulario -->
+    <record id="voluntario_view_form" model="ir.ui.view">
+        <field name="name">Formulario de equipo de futbol</field>
+        <field name="model">voluntario</field>
+        <field name="arch" type="xml">
+            <form>
+               <group>
+                    <group>
+                        <field name="num_voluntario" />
+                        <field name="nombre" />
+                        <field name="apellidos" />
+                    </group>
+                    
+                    <group>
+                        <field name="foto" widget="image" class="oe_avatar" />
+                        <field name="barcode_carnet" widget="image" class="oe_avatar"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree(list) View -->
+    <record id="voluntario_view_tree" model="ir.ui.view">
+        <field name="name">Lista de voluntarios</field>
+        <field name="model">voluntario</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="num_voluntario" />
+                <field name="nombre" />
+                <field name="apellidos" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista busqueda-->
+    <record id="voluntario_view_search" model="ir.ui.view">
+        <field name="name">Búsqueda de Voluntario por nombre</field>
+        <field name="model">voluntario</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="num_voluntario" />
+                <field name="nombre" />
+                <field name="apellidos" />
+            </search>
+        </field>
+    </record>
+
+    <!-- Vista Kanban -->
+    <record id="voluntario_view_kanban" model="ir.ui.view">
+        <field name="name">Lista de voluntarios</field>
+        <field name="model">voluntario</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <!-- Indicamos que atributos usaremos al hacer la vista Kanban -->
+                <field name="id" />
+                <field name="num_voluntario" />
+                <field name="nombre" />
+                <field name="apellidos" />
+                <field name="foto"/>
+                <!-- Plantilla QWeb para indicar como es la tarjeta Kanban-->
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_image_inner_pic">
+                            <field name="num_voluntario" />
+                            <field name="nombre" />
+                            <field name="apellidos" />
+                            <img alt="Avatar" t-att-src="kanban_image('voluntario', 'foto', record.id.raw_value)" />
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+</odoo>

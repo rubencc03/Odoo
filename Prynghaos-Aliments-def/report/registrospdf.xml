@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Datos que contendra el informe -->
+    <template id="report_registros">
+        <!-- Aqui la estructura a seguir -->
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <!-- Cabecera con la info de la donacion -->
+                        <h2 t-field="doc.info" />
+                        <!-- Mostramos otra vez la info pero mas pequeña -->
+                        <p>
+                            Info Registo:
+                            <span t-field="doc.info" />
+                        </p>
+                        <!-- Mostramos el voluntario que recogio la donación -->
+                        <p>
+                            voluntario que recogio la donacion:
+                            <span t-field="doc.voluntarios" />
+                        </p>
+                        <!-- Mostramos el alimento recogido -->
+                        <p>
+                            Alimentos Recogidos:
+                            <span t-field="doc.alimentos" />
+                        </p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Aquí es donde de ejecuta el informe cogiendo los datos de arriba-->
+    <report id="report_pdf" model="registros" string="Informe Registros PDF" name="Prynghaos-Aliments-def.report_registros"  report_type="qweb-pdf" />
+
+
+</odoo>

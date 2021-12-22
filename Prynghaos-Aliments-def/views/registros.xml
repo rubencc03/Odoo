@@ -1,0 +1,31 @@
+<odoo>
+  <data>
+
+    <!-- Actionq que al invocarlo desde un menu irá al "almacen"-->
+    <record model="ir.actions.act_window" id="action_registros">
+      <field name="name">Registros de Recogidas de alimentos</field>
+      <field name="res_model">registros</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- Menu principal el cual irá a registros -->
+    <menuitem name="Registros Recogida Alimentos" id="seccion_principal" action="action_registros"/>
+
+    <!--Ponemos este también que va a registros por que unos estudios cientificos dicen que así queda mejor-->
+    <menuitem name="Mostrar Registros" id="registros" parent="seccion_principal" action="action_registros"/>
+
+    <!-- Definimos como es la vista explicita de la lista-->
+    <record model="ir.ui.view" id="lista_registros">
+      <field name="name">Lista de tareas</field>
+      <field name="model">registros</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="info"/>
+          <field name="alimentos"/>
+        </tree>
+      </field>
+    </record>
+
+  </data>
+</odoo>
