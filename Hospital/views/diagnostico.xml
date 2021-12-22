@@ -1,0 +1,36 @@
+<odoo>
+  <data>
+    
+    <record model="ir.actions.act_window" id="actionDiagnosticos">
+      <!-- -->
+      <field name="name">Diagnostico</field>
+      <field name="res_model">diagnosticos</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Diagnosticos" id="diagnosticos_menu"  action="actionDiagnosticos"/>
+    
+
+
+    <!-- explicit list view definition -->
+
+    <!-- Definimos como es la vista explicita de la lista-->
+    <record model="ir.ui.view" id="lista_diagnosticos_tree">
+      <field name="name">Lista de Diagnosticos</field>
+      <field name="model">diagnosticos</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="pacientes"/>  <!--field.MaintoOne-->
+          <field name="medicos"/><!--field.MaintoOne-->
+          <field name="veredicto"/><!--field.text-->
+        </tree>
+      </field>
+    </record>
+
+   
+   
+
+   
+
+  </data>
+</odoo>
