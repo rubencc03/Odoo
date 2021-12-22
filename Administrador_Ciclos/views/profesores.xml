@@ -1,0 +1,31 @@
+<odoo>
+  <data>
+
+    <record model="ir.actions.act_window" id="actionProfesores">
+      <!-- -->
+      <field name="name">Listado de Profesores</field>
+      <field name="res_model">profesores</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="Profesores" id="profesores" parent="ciclos" action="actionProfesores"/>
+
+
+    <!-- Definimos como es la vista explicita de la lista-->
+    <record model="ir.ui.view" id="lista_profesores">
+      <field name="name">Lista de Profesores</field>
+      <field name="model">profesores</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="apellido"/>
+          <field name="telefono"/>
+          <field name="dni"/>
+        </tree>
+      </field>
+    </record>
+
+  </data>
+</odoo>

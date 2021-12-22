@@ -1,0 +1,38 @@
+<odoo>
+  <data>
+    <!-- actions opening views on models -->
+    <!-- Acciones al abrir las vistas en los modelos 
+    https://www.odoo.com/documentation/14.0/developer/reference/addons/actions.html
+    -->
+
+
+
+    <record model="ir.actions.act_window" id="actionModulos">
+      <!-- -->
+      <field name="name">Listado de M0dulos</field>
+      <field name="res_model">modulos</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="Modulos" id="modulos" parent="ciclos" action="actionModulos"/>
+
+
+    <!-- explicit list view definition -->
+
+    <!-- Definimos como es la vista explicita de la lista-->
+    <record model="ir.ui.view" id="lista_ciclos">
+      <field name="name">Lista de Modulos</field>
+      <field name="model">modulos</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="alumnos"/>
+          <field name="profesores"/>
+        </tree>
+      </field>
+    </record>
+
+  </data>
+</odoo>
