@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id='prestamoAction' model='ir.actions.act_window'>
+        <field name="name">Prestamo Comics</field>
+        <field name="res_model">prestamo</field>
+        <!-- Indicamos que este modelo se puede ver en kanban, tree y form -->
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Prestamos Comics" id="prestamo_menu" parent="biblioteca_base_menu" action="prestamoAction" />
+
+   <!-- Tree(list) View -->
+    <record id="prestamo_view_tree" model="ir.ui.view">
+        <field name="name">Registros de Prestamo</field>
+        <field name="model">prestamo</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="socios" />
+                <field name="comics" />
+                <field name="fecha_salida" />
+                <field name="fecha_entrada" />
+            </tree>
+        </field>
+    </record>
+    </data>
+</odoo>
